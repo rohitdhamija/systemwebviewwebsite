@@ -1,1 +1,1 @@
-<?php include_once("confirm.html"); ?>
+<?php include_once("index.html"); ?>
