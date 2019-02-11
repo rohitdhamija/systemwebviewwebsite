@@ -50,7 +50,7 @@ var settings = {
   "data": {"outputfromWeb": cbData}
 }
 
- alert("Making call to URL:"+ cbUrl + " with data: "+ settings.data);
+ alert("Making call to URL:"+ cbUrl + " with data: "+ JSON.stringify(settings.data);
     
 $.ajax(settings).done(function (response) {
   console.log(response);
