@@ -29,7 +29,8 @@ var callbackvalue;
 
 function sendCallBack(cbUrl, cbData) {
     
-    alert("Making call to URL:"+ cbUrl + " with data: "+ cbData);
+ 
+   
     
 var settings = {
   "async": true,
@@ -49,6 +50,8 @@ var settings = {
   "data": {"outputfromWeb": cbData}
 }
 
+ alert("Making call to URL:"+ cbUrl + " with data: "+ settings.data);
+    
 $.ajax(settings).done(function (response) {
   console.log(response);
 });
