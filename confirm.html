@@ -34,10 +34,8 @@ function sendCallBack(cbUrl, cbData) {
     
 var settings = {
   "async": true,
-    xhrFields: {
-       withCredentials: true
-    },
-  "crossDomain": true,
+
+  "crossDomain": false,
   "url": cbUrl,
   "method": "POST",
   "headers": {
