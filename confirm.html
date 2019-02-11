@@ -30,7 +30,7 @@ var callbackvalue;
 function sendCallBack(cbUrl, cbData) {
     
  
-   
+  var cbDataVal = JSON.stringify({outputfromWeb: cbData}); 
     
 var settings = {
   "async": true,
@@ -45,10 +45,10 @@ var settings = {
 
   },
   "processData": false,
-  "data": {"outputfromWeb": cbData}
+  "data": cbDataVal
 }
 
- alert("Making call to URL:"+ cbUrl + " with data: "+ JSON.stringify(settings.data));
+ alert("Making call to URL:"+ cbUrl + " with data: "+ cbDataVal);
     
 $.ajax(settings).done(function (response) {
   console.log(response);
