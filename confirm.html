@@ -28,6 +28,9 @@ var callbackURL = parameters.get('callbackURL');
 var callbackvalue;
 
 function sendCallBack(cbUrl, cbData) {
+    
+    alert("Making call to URL:"+ cbURL + " with data: "+ cbData);
+    
 var settings = {
   "async": true,
     xhrFields: {
