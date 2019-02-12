@@ -3,10 +3,10 @@
 <html>
 <body>
     <h2>Credit Card Transaction Dispute</h2>
-<h3>We'd be happy to help you dispute your transaction</h3>
-    <h4>Merchant Name: <span id="first_name"></span></h4>
-    <h4>Amount: <span id="last_name"></span></h4>
-    <h4>Date: <span id="last_name"></h4>
+<p>Hi <span id="fName"> <span id="lName">!, We'd be happy to help you dispute your transaction.</p>
+    <h4>Merchant Name: <span id="merchant"></span></h4>
+    <h4>Amount: <span id="amount"></span></h4>
+    <h4>Date: <span id="date"></span></h4>
    <h2>Dispute Form</h2>
 <p> Please select the option below that best describes the reason for your inquiry:<p>
 <form>
@@ -28,6 +28,12 @@ var parameters = new URL(window.location).searchParams;
 document.getElementById("first_name").innerHTML =  parameters.get('fName') //1
 
 document.getElementById("last_name").innerHTML =  parameters.get('lName') //2
+
+document.getElementById("merchant").innerHTML =  parameters.get('merchant') //2
+
+document.getElementById("date").innerHTML =  parameters.get('date') //2
+
+document.getElementById("amount").innerHTML =  parameters.get('amount') //2        
     
 var callbackURL = parameters.get('callbackURL');
     
@@ -62,7 +68,7 @@ $.ajax(settings).done(function (response) {
 }
     
 function submitbtn() {
-  callbackvalue = "Submitted succesfully";
+  callbackvalue = "Dispute submitted, please note the transaction number: "+ Math.random().toString(36).substring(7);
   sendCallBack(callbackURL,callbackvalue);
 }
     
