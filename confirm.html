@@ -3,7 +3,7 @@
 <html>
 <body>
     <h2>Credit Card Transaction Dispute</h2>
-<p>Hi <span id="fName"> <span id="lName">!, We'd be happy to help you dispute your transaction.</p>
+<p>Hi <span id="lName"> <span id="lName">!, We'd be happy to help you dispute your transaction.</p>
     <h4>Merchant Name: <span id="merchant"></span></h4>
     <h4>Amount: <span id="amount"></span></h4>
     <h4>Date: <span id="date"></span></h4>
@@ -25,9 +25,9 @@
 
 var parameters = new URL(window.location).searchParams;
 
-document.getElementById("first_name").innerHTML =  parameters.get('fName') //1
+document.getElementById("fName").innerHTML =  parameters.get('fName') //1
 
-document.getElementById("last_name").innerHTML =  parameters.get('lName') //2
+document.getElementById("lName").innerHTML =  parameters.get('lName') //2
 
 document.getElementById("merchant").innerHTML =  parameters.get('merchant') //2
 
