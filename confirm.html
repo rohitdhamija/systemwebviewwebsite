@@ -2,12 +2,22 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h2>Please confirm your details</h2>
-    <h3>First name: <span id="first_name"></span></h3>
-    <h3>Last name: <span id="last_name"></span></h3>
-   
-    <p>Click on <b>Submit</b> button after verifying above details, else click on <b>Cancel</b> button for editing.</p>
-    <button onclick="submitbtn()">Submit</button>
+    <h2>Credit Card Transaction Dispute</h2>
+<h3>We'd be happy to help you dispute your transaction</h3>
+    <h4>Merchant Name: <span id="first_name"></span></h4>
+    <h4>Amount: <span id="last_name"></span></h4>
+    <h4>Date: <span id="last_name"></h4>
+   <h2>Dispute Form</h2>
+<p> Please select the option below that best describes the reason for your inquiry:<p>
+<form>
+  <input type="radio" name = "dispute" value="notrx" checked> I don't recognize this transaction<br>
+  <input type="radio" name = "dispute" value="cancl"> I've cancelled<br>
+  <input type="radio" name = "dispute"  value="morethanone"> I've been billed more than once for this  <br>
+    <input type="radio" name = "dispute"  value="morebill"> I've been billed too much  <br>
+    <input type="radio" name = "dispute" value="none"> None of the above 
+</form> 
+   <br>
+    <button onclick="submitbtn()">Submit Dispute</button>
     <button onclick="cancelbtn()">Cancel</button>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
