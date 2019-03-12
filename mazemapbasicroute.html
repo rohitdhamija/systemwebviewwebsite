@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="https://api.mazemap.com/js/v2.0.3/mazemap.min.css">
+    <script type='text/javascript' src='https://api.mazemap.com/js/v2.0.3/mazemap.min.js'></script>
+
+    <style>
+        body { margin:0px; padding:0px; width: 100vw; height:100vh; }
+    </style>
+</head>
+<body>
+    <div id="map" class="mazemap"></div>
+
+    <script>
+
+
+        var startLngLat = {lng: -78.49890300323919, lat: 38.03140865387675};
+        var destLngLat = {lng: -78.4985511896671, lat: 38.03148740262034};
+
+        // Just the same way to initialize as always...
+        var myMap = new Mazemap.Map({
+            container: 'map',
+            campuses: 50,
+            center: startLngLat,
+            zoom: 18.837,
+            zLevel: 1,
+            zLevelControl: false,
+            scrollZoom: false,
+            doubleClickZoom: false,
+            touchZoomRotate: false,
+            interactive: false
+        });
+
+        var zoomInOutBool = false;
+        var mapZoom = 18.837;
+
+        myMap.on('load', function(){
+            console.log('mazemap ready');
+
+
+            var blueDot = new Mazemap.BlueDot( {
+                accuracyCircle: true,
+                zLevel: 1
+            } ).setLngLat( startLngLat ).addTo(myMap);
+
+
+            function setNewPosition(){
+
+                var newLngLat = calcLinearLatLng(startLngLat, destLngLat, 5);
+
+                blueDot.setLngLat(newLngLat, {animate: true, duration: 400});
+
+                myMap.flyTo({zoom: mapZoom, center: newLngLat, duration: 400, easing: function(a){
+                    return a;
+                }});
+            }
+
+            function setNewAccuracy(){
+                var accuracy = Math.random() * 3 + 10;
+                blueDot.setAccuracy(accuracy);
+            }
+
+            setInterval(setNewPosition, 250);
+            setInterval(setNewAccuracy, 2000);
+
+            setInterval(toggleZoomInOut, 5000);
+        });
+
+        function toggleZoomInOut(){
+            zoomInOutBool = !zoomInOutBool;
+
+            if(zoomInOutBool){
+                mapZoom = 20.5;
+            }else{
+                mapZoom = 18.837;
+            };
+        }
+
+        // Returns a linear moving point along the line between startLatLng and endLatLng given a speed factor
+        function calcLinearLatLng(startLatLng, endLatLng, speed){
+
+            var startPoint = myMap.project(startLatLng);
+            var endPoint = myMap.project(endLatLng);
+
+            var dX = endPoint.x - startPoint.x;
+            var dY = endPoint.y - startPoint.y;
+
+            var now = performance.now();
+
+            var lengthTime = speed * 1000;
+
+            var timeFraction = (now % lengthTime) / lengthTime;
+
+            var fractionX = dX * timeFraction;
+            var fractionY = dY * timeFraction;
+
+            var fractionPoint = new Mazemap.mapboxgl.Point(fractionX, fractionY);
+
+
+            //Alternate the direction
+            var direction = Math.floor( now / lengthTime) % 2 ;
+
+            var calcPoint;
+            if(direction){
+                calcPoint = endPoint.sub(fractionPoint);
+            }else{
+                calcPoint = startPoint.add(fractionPoint);
+            }
+            var calcLatLng = myMap.unproject(calcPoint);
+
+            return calcLatLng;
+        }
+
+
+    </script>
+</body>
