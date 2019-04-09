@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Device Info</h2>
+
+<p>This bot is running on: </p>
+
+<p id="demo"></p>
+
+<script>
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
+var deviceInfo = "desktop_or_pc";
+    
+if( isMobile.any() ) { 
+    deviceInfo = "mobile";
+    alert('Mobile')
+};
+if( isMobile.iOS() ) { 
+     deviceInfo = "iOS";
+    alert('iOS') ;
+};
+if( isMobile.Android() ) {
+    deviceInfo = "android";
+  alert('Android');  
+} 
+document.getElementById("demo").innerHTML = deviceInfo; 
+</script>
+
+</body>
+</html>
