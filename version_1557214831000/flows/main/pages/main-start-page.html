@@ -1,0 +1,32 @@
+<div class="oj-flex">
+    <oj-label id="oj-label--436629577-5" class="oj-flex-item oj-sm-12 oj-md-3">Please confirm your information:</oj-label>
+</div>
+<div class="oj-flex-items-pad oj-flex oj-sm-flex-direction-column">
+    <oj-label id="oj-label--436629577-2" for="oj-input-text--436629577-1" class="oj-flex-item">Name:</oj-label>
+    <oj-input-text id="oj-input-text-1008096806-1" label-hint="Name" value="{{ $variables.data.answer1 }}" readonly="true" class="oj-flex-item"></oj-input-text>
+    <oj-label id="oj-label--436629577-3" class="oj-flex-item">Amount</oj-label>
+    <oj-input-text id="oj-input-text-1008096806-2" label-hint="Amount" value="{{ $variables.data.answer2 }}" readonly="true" class="oj-flex-item"></oj-input-text>
+</div>
+<div class="oj-flex-items-pad oj-flex oj-sm-flex-direction-column oj-sm-flex-items-1">
+    <oj-label id="oj-label--436629577-1" class="oj-flex-item">Please choose one of the option:</oj-label>
+    <oj-radioset id="oj-radioset--436629577-1" labelled-by="oj-label--436629577-1" class="oj-flex-item">
+        <oj-option value="option1">I don't recognize this transaction</oj-option>
+        <oj-option value="option2">I've cancelled</oj-option>
+        <oj-option value="option3">I've been billed more than once for this</oj-option>
+        <oj-option value="option4">None of the above</oj-option>
+    </oj-radioset>
+</div>
+<div class="oj-flex">
+    <div class="oj-flex-item oj-sm-12 oj-md-5 oj-flex oj-sm-flex-direction-column">
+        <oj-label id="oj-label--436629577-4" for="oj-text-area--436629577-1" class="oj-flex-item">Comments and additional information:</oj-label>
+        <oj-text-area id="oj-text-area--436629577-1" class="oj-flex-item"></oj-text-area>
+    </div>
+</div>
+<div class="oj-flex">
+    <div class="oj-flex-item oj-sm-12 oj-md-2">
+        <oj-button id="oj-button-1008096806-1" on-oj-action="[[$listeners.ojButton10080968061OjAction]]">Submit Dispute</oj-button>
+    </div>
+    <div class="oj-flex-item oj-sm-12 oj-md-2">
+        <oj-button id="oj-button--436629577-1" on-oj-action="[[$listeners.ojButton4366295771OjAction]]">Cancel Dispute</oj-button>
+    </div>
+</div>
